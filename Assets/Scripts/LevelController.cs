@@ -7,6 +7,10 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Editor]
 	[SerializeField] private float SkyBoxMovementSpeed;
+	[SerializeField] private float ObjectsSpeed;
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// [Properties]
+	public float ObjectMovementSpeed => ObjectsSpeed;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
 	private Material _skyBoxMaterial;
@@ -14,6 +18,7 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Start()
 	{
+		Core.SetActiveLevelController(this);
 		_skyBoxMaterial = RenderSettings.skybox;
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------

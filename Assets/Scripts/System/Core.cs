@@ -8,9 +8,14 @@ public class Core : MonoBehaviour
     //[SerializeField] private HUDManager HUDManager;
     [SerializeField] private SceneHandler SceneHandler;
     // ------------------------------------------------------------------------------------------------------------------------------
-    // [Code] Private Variables
+    // [Properties]
+    public static FlappyFish ActiveFlappyFish => Instance._flappyFishReference;
+    public static LevelController ActiveLevelController => Instance._levelController;
+    // ------------------------------------------------------------------------------------------------------------------------------
+    // [Code - Private]
     private static Core _instance;
     private FlappyFish _flappyFishReference;
+    private LevelController _levelController;
     private Camera _mainCamera;
     // ------------------------------------------------------------------------------------------------------------------------------
     public static Core Instance
@@ -43,11 +48,6 @@ public class Core : MonoBehaviour
         return _instance != null;
 	}
     // ------------------------------------------------------------------------------------------------------------------------------
-    public static FlappyFish GetActivePlayer()
-	{
-        return Instance._flappyFishReference;
-    }
-    // ------------------------------------------------------------------------------------------------------------------------------
     public static Camera GetMainCamera()
 	{
         return Instance._mainCamera;
@@ -59,11 +59,21 @@ public class Core : MonoBehaviour
         //Instance.InputManager.RegisterPlayer(player);
 	}
     // ------------------------------------------------------------------------------------------------------------------------------
- //   public static HUDManager GetHudManager()
-	//{
- //       return Instance.HUDManager;
-	//}
- //   // ------------------------------------------------------------------------------------------------------------------------------
+    public static void SetActiveLevelController(LevelController levelController)
+    {
+        if (Instance._levelController != null)
+		{
+            throw new System.Exception("Level Controller already set!");
+		}
+
+        Instance._levelController = levelController;
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    //   public static HUDManager GetHudManager()
+    //{
+    //       return Instance.HUDManager;
+    //}
+    //   // ------------------------------------------------------------------------------------------------------------------------------
     public static InputManager GetInputManager()
 	{
         return Instance.InputManager;
