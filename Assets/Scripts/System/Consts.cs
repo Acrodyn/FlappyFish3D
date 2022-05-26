@@ -6,4 +6,6 @@
     public const float REALLY_TINY_NUMBER = 1e-9f;
 
     public const float FULL_REVOLUTION = 360f;
+
+    public const string MOVABLE_TAG = "Movable";
 }
