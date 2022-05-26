@@ -7,6 +7,7 @@ public class FlappyFish : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Editor]
     [SerializeField] private float DefaultJumpStrength;
+    [SerializeField] private float GravityAcceleration;
     [SerializeField] private Rigidbody FishRigidBody;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Code - private]
@@ -16,6 +17,11 @@ public class FlappyFish : MonoBehaviour
 	{
         _jumpStrength = DefaultJumpStrength;
         AssignInputActions();
+    }
+	// ------------------------------------------------------------------------------------------------------------------------------
+	void Update()
+	{
+        AddGravity();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     void OnDestroy()
@@ -40,5 +46,13 @@ public class FlappyFish : MonoBehaviour
         InputActions inputActions = Core.GetInputManager().GetInputActions();
         inputActions.FlappyFish.Jump.performed -= ctx => Jump();
     }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    private void AddGravity()
+    {
+        if (FishRigidBody.velocity.y < 0)
+		{
+            FishRigidBody.AddForce(Vector2.down * GravityAcceleration);
+        }
+	}
     // ------------------------------------------------------------------------------------------------------------------------------
 }

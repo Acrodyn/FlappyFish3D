@@ -623,6 +623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DefaultJumpStrength: 300
+  GravityAcceleration: 0.8
   FishRigidBody: {fileID: 1230687576}
 --- !u!1001 &1396865734
 PrefabInstance:
