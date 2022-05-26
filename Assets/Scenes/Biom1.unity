@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.38341138, g: 0.5988755, b: 0.63416296, a: 1}
+  m_IndirectSpecularColor: {r: 0.38496128, g: 0.6009269, b: 0.6361861, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -214,7 +214,7 @@ Transform:
   m_GameObject: {fileID: 40664692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -5.5, z: -1.48}
-  m_LocalScale: {x: 8.229426, y: 1, z: 4.3729606}
+  m_LocalScale: {x: 45, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -386,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 189070657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 7.18, z: -1.48}
-  m_LocalScale: {x: 8.229426, y: 1, z: 4.3729606}
+  m_LocalScale: {x: 45, y: 1, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -745,10 +745,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f7edf35daa4034888a9c8e7b7d0b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Difficulty: 0
   SkyBoxMovementSpeed: 10
   ObjectsSpeed: 5
   StartSpawnDelay: 4
   RegularSpawnDelay: 1.5
+  SpawnDifficultyModifier: 0.3
+  ObstacleLimit: 2.6
   SpawnedObjectsHolder: {fileID: 1747016060}
   ObstaclePrefab: {fileID: 9171132827639903448, guid: f060294a5b4bf5845aebacb0da3ca406, type: 3}
 --- !u!1001 &1396865734
