@@ -699,6 +699,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DefaultJumpStrength: 300
   GravityAcceleration: 0.8
+  DeathForce: 100
   FishRigidBody: {fileID: 1230687576}
 --- !u!1 &1290485268
 GameObject:
@@ -745,7 +746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51f7edf35daa4034888a9c8e7b7d0b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Difficulty: 0
+  Difficulty: 1
   SkyBoxMovementSpeed: 10
   ObjectsSpeed: 5
   StartSpawnDelay: 4

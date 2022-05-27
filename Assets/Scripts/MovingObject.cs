@@ -5,6 +5,10 @@ using UnityEngine;
 public class MovingObject : MonoBehaviour
 {
 	// ------------------------------------------------------------------------------------------------------------------------------
+	// [Editor]
+	// ------------------------------------------------------------------------------------------------------------------------------
+	// [Properties]
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
 	private LevelController _activeLevelController;
 	private Renderer _renderer;
@@ -22,19 +26,14 @@ public class MovingObject : MonoBehaviour
 		Move();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
+	public virtual void Interact(FlappyFish fish)
+	{
+		
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void Move()
 	{
 		transform.position += Vector3.left * Time.deltaTime * _activeLevelController.ObjectMovementSpeed;
-		//CheckForDestruction();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
-	//private void CheckForDestruction()
-	//{
-	//	Vector3 screenPoint = _camera.WorldToViewportPoint(transform.position);
-	//	if (screenPoint.x < 0)
-	//	{
-	//		Destroy(gameObject);
-	//	}
-	//}
-	//// ------------------------------------------------------------------------------------------------------------------------------
 }

@@ -13,4 +13,20 @@ public static class Utils
         return AreNearlyEqual(a, 0.0f, epsilon);
     }
     // ------------------------------------------------------------------------------------------------------------------------------
+    public static MovingObject GetMovingObjectRoot(Transform transform)
+    {
+        if (transform == null || transform.gameObject == null)
+		{
+            return null;
+		}
+
+        MovingObject movingObject = transform.gameObject.GetComponent<MovingObject>();
+        if (movingObject != null)
+        {
+            return movingObject;
+        }
+
+        return GetMovingObjectRoot(transform.parent);
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
 }

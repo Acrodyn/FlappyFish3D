@@ -8,10 +8,12 @@ public class FlappyFish : MonoBehaviour
     // [Editor]
     [SerializeField] private float DefaultJumpStrength;
     [SerializeField] private float GravityAcceleration;
+    [SerializeField] private float DeathForce;
     [SerializeField] private Rigidbody FishRigidBody;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Code - private]
     private float _jumpStrength;
+    private bool _isDead;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Start()
 	{
@@ -24,13 +26,46 @@ public class FlappyFish : MonoBehaviour
         AddGravity();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
+    void OnTriggerEnter(Collider collider)
+    {
+		if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
+		{
+            MovingObject movingObject = Utils.GetMovingObjectRoot(collider.transform);
+            if (movingObject == null)
+			{
+                throw new System.Exception(string.Format("Object {0} is marked as movable but isn't part of a hiararchy that includes movable component", collider.gameObject.ToString()));
+			}
+
+            movingObject.Interact(this);
+		}
+	}
+    // ------------------------------------------------------------------------------------------------------------------------------
     void OnDestroy()
 	{
         UnassignInputActions();
     }
-	// ------------------------------------------------------------------------------------------------------------------------------
-	private void Jump()
+    // ------------------------------------------------------------------------------------------------------------------------------
+    public void KillFish()
+    {
+        _isDead = true;
+        FishRigidBody.useGravity = false;
+        FishRigidBody.velocity = Vector3.zero;
+        FishRigidBody.AddForce(Vector2.up * DeathForce);
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    public void ReviveFish()
+    {
+        _isDead = false;
+        FishRigidBody.useGravity = true;
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    private void Jump()
 	{
+        if (_isDead)
+		{
+            return;
+		}
+
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector2.up * DefaultJumpStrength);
     }
@@ -49,6 +84,11 @@ public class FlappyFish : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     private void AddGravity()
     {
+        if (_isDead)
+		{
+            return;
+		}
+
         if (FishRigidBody.velocity.y < 0)
 		{
             FishRigidBody.AddForce(Vector2.down * GravityAcceleration);

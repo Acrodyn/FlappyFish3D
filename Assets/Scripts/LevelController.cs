@@ -65,10 +65,11 @@ public class LevelController : MonoBehaviour
 			_spawnDelay = RegularSpawnDelay - Difficulty * SpawnDifficultyModifier;
 		}
 	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private float GetObstacleSpawnPosition()
 	{
-		float obstacleUpLimit;
 		float obstacleDownLimit;
+		float obstacleUpLimit;
 
 		if (_lastSpawnedObstacleTransform != null)
 		{
@@ -79,8 +80,8 @@ public class LevelController : MonoBehaviour
 		}
 		else
 		{
-			obstacleUpLimit = ObstacleLimit;
 			obstacleDownLimit = -ObstacleLimit;
+			obstacleUpLimit = ObstacleLimit;
 		}
 
 		return Random.Range(obstacleDownLimit, obstacleUpLimit);
