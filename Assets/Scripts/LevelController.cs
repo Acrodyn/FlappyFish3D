@@ -44,6 +44,11 @@ public class LevelController : MonoBehaviour
 		_skyBoxMaterial.SetFloat("_Rotation", 0f);
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
+	public void StopMovement()
+	{
+		Debug.Log("STOP!");
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
 	{
 		_currentSkyBoxRotation = Mathf.MoveTowards(_currentSkyBoxRotation, Consts.FULL_REVOLUTION, Time.deltaTime * SkyBoxMovementSpeed);

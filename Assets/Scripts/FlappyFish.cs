@@ -9,6 +9,7 @@ public class FlappyFish : MonoBehaviour
     [SerializeField] private float DefaultJumpStrength;
     [SerializeField] private float GravityAcceleration;
     [SerializeField] private float DeathForce;
+    [SerializeField] private ObserverEvent FishDeathEvent;
     [SerializeField] private Rigidbody FishRigidBody;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Code - private]
@@ -51,6 +52,7 @@ public class FlappyFish : MonoBehaviour
         FishRigidBody.useGravity = false;
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector2.up * DeathForce);
+        FishDeathEvent.Trigger();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public void ReviveFish()
