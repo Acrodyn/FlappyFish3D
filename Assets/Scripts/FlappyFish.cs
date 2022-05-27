@@ -9,6 +9,7 @@ public class FlappyFish : MonoBehaviour
     [SerializeField] private float DefaultJumpStrength;
     [SerializeField] private float GravityAcceleration;
     [SerializeField] private float DeathForce;
+    [SerializeField] private float DeathSideForce;
     [SerializeField] private ObserverEvent FishDeathEvent;
     [SerializeField] private Rigidbody FishRigidBody;
     // ------------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +30,13 @@ public class FlappyFish : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     void OnTriggerEnter(Collider collider)
     {
-		if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
+        if (collider.gameObject.CompareTag(Consts.KILLER_TAG))
+        {
+            KillFish();
+            return;
+        }
+
+        if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
 		{
             MovingObject movingObject = Utils.GetMovingObjectRoot(collider.transform);
             if (movingObject == null)
@@ -51,7 +58,8 @@ public class FlappyFish : MonoBehaviour
         _isDead = true;
         FishRigidBody.useGravity = false;
         FishRigidBody.velocity = Vector3.zero;
-        FishRigidBody.AddForce(Vector2.up * DeathForce);
+        FishRigidBody.AddForce(Vector3.up * DeathForce);
+        FishRigidBody.AddForce(Vector3.back * DeathSideForce, ForceMode.Impulse);
         FishDeathEvent.Trigger();
     }
     // ------------------------------------------------------------------------------------------------------------------------------

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9171132827076033099}
   - component: {fileID: 9171132827076033096}
   - component: {fileID: 9171132827076033097}
-  - component: {fileID: 9171132827076033098}
+  - component: {fileID: 4672536837201708272}
   m_Layer: 0
   m_Name: CylinderDown
   m_TagString: Movable
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9171132827076033098
-CapsuleCollider:
+--- !u!65 &4672536837201708272
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,10 +94,9 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0.005, z: -0.00000008940697}
 --- !u!1 &9171132827639903448
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b820ce693fb77b542920350295d328f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsKiller: 1
+  StopOnLevelEnd: 1
 --- !u!1 &9171132827651741424
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +155,7 @@ GameObject:
   - component: {fileID: 9171132827651741439}
   - component: {fileID: 9171132827651741436}
   - component: {fileID: 9171132827651741437}
-  - component: {fileID: 9171132827651741438}
+  - component: {fileID: 941596520330709568}
   m_Layer: 0
   m_Name: CylinderUp
   m_TagString: Movable
@@ -229,8 +228,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9171132827651741438
-CapsuleCollider:
+--- !u!65 &941596520330709568
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -239,7 +238,6 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 1.9999999, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: -0.005, z: -0.00000008940697}

@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
  	[SerializeField] private GameObject ObstaclePrefab;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
+	public bool IsLevelMovementStopped => _isLevelMovementStopped;
 	public float ObjectMovementSpeed => ObjectsSpeed;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
@@ -25,6 +26,7 @@ public class LevelController : MonoBehaviour
 	private Material _skyBoxMaterial;
 	private float _currentSkyBoxRotation = 0f;
 	private float _spawnDelay;
+	private bool _isLevelMovementStopped = false;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Start()
 	{
@@ -35,8 +37,11 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
 	{
-		RotateSkyBox();
-		SpawnCheck();
+		if (!_isLevelMovementStopped)
+		{
+			RotateSkyBox();
+			SpawnCheck();
+		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void OnDestroy()
@@ -46,7 +51,7 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	public void StopMovement()
 	{
-		Debug.Log("STOP!");
+		_isLevelMovementStopped = true;
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
