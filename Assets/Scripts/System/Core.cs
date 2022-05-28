@@ -4,11 +4,14 @@ public class Core : MonoBehaviour
 {
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Editor] Editor values
-    [SerializeField] private InputManager InputManager;
+    [SerializeField] private InputManager InputManagerReference;
+    [SerializeField] private ScoreManager ScoreManagerReference;
     //[SerializeField] private HUDManager HUDManager;
     [SerializeField] private SceneHandler SceneHandler;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
+    public static InputManager InputManager => Instance.InputManagerReference;
+    public static ScoreManager ScoreManager => Instance.ScoreManagerReference;
     public static FlappyFish ActiveFlappyFish => Instance._flappyFishReference;
     public static LevelController ActiveLevelController => Instance._levelController;
     // ------------------------------------------------------------------------------------------------------------------------------
@@ -68,21 +71,6 @@ public class Core : MonoBehaviour
 
         Instance._levelController = levelController;
     }
-    // ------------------------------------------------------------------------------------------------------------------------------
-    //   public static HUDManager GetHudManager()
-    //{
-    //       return Instance.HUDManager;
-    //}
-    //   // ------------------------------------------------------------------------------------------------------------------------------
-    public static InputManager GetInputManager()
-	{
-        return Instance.InputManager;
-	}
-    // ------------------------------------------------------------------------------------------------------------------------------
-    public static SceneHandler GetSceneHandler()
-	{
-        return Instance.SceneHandler;
-	}
     // ------------------------------------------------------------------------------------------------------------------------------
     private void InitGameSystems()
 	{

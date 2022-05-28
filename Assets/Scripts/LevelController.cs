@@ -54,6 +54,11 @@ public class LevelController : MonoBehaviour
 		_isLevelMovementStopped = true;
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
+	public void OnPointsZoneTriggered()
+	{
+
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
 	{
 		_currentSkyBoxRotation = Mathf.MoveTowards(_currentSkyBoxRotation, Consts.FULL_REVOLUTION, Time.deltaTime * SkyBoxMovementSpeed);

@@ -6,12 +6,18 @@ public class FlappyFish : MonoBehaviour
 {
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Editor]
+    [SerializeField] private bool IsFishImmortal;
     [SerializeField] private float DefaultJumpStrength;
     [SerializeField] private float GravityAcceleration;
     [SerializeField] private float DeathForce;
     [SerializeField] private float DeathSideForce;
+    [SerializeField] private AudioClip JumpSound;
+    [SerializeField] private AudioClip DeathSound;
     [SerializeField] private ObserverEvent FishDeathEvent;
     [SerializeField] private Rigidbody FishRigidBody;
+    // ------------------------------------------------------------------------------------------------------------------------------
+    // [Properties]
+    public bool IsDead => _isDead;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Code - private]
     private float _jumpStrength;
@@ -21,6 +27,7 @@ public class FlappyFish : MonoBehaviour
 	{
         _jumpStrength = DefaultJumpStrength;
         AssignInputActions();
+        Core.SetActiveFish(this);
     }
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
@@ -55,12 +62,18 @@ public class FlappyFish : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     public void KillFish()
     {
+        if (IsFishImmortal || _isDead)
+		{
+            return;
+		}
+
         _isDead = true;
         FishRigidBody.useGravity = false;
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector3.up * DeathForce);
         FishRigidBody.AddForce(Vector3.back * DeathSideForce, ForceMode.Impulse);
         FishDeathEvent.Trigger();
+        AudioSource.PlayClipAtPoint(DeathSound, transform.position);
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public void ReviveFish()
@@ -78,17 +91,18 @@ public class FlappyFish : MonoBehaviour
 
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector2.up * DefaultJumpStrength);
+        AudioSource.PlayClipAtPoint(JumpSound, transform.position);
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     private void AssignInputActions()
 	{
-        InputActions inputActions = Core.GetInputManager().GetInputActions();
+        InputActions inputActions = Core.InputManager.GetInputActions();
         inputActions.FlappyFish.Jump.performed += ctx => Jump();
 	}
     // ------------------------------------------------------------------------------------------------------------------------------
     private void UnassignInputActions()
     {
-        InputActions inputActions = Core.GetInputManager().GetInputActions();
+        InputActions inputActions = Core.InputManager.GetInputActions();
         inputActions.FlappyFish.Jump.performed -= ctx => Jump();
     }
     // ------------------------------------------------------------------------------------------------------------------------------

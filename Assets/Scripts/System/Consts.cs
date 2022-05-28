@@ -7,6 +7,7 @@
 
     public const float FULL_REVOLUTION = 360f;
 
+    public const string PLAYER_TAG = "Player";
     public const string MOVABLE_TAG = "Movable";
     public const string KILLER_TAG = "Killer";
 }
