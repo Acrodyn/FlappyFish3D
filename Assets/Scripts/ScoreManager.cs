@@ -30,9 +30,7 @@ public class ScoreManager : MonoBehaviour
             receivedPoints *= _modifierValue; 
 		}
 
-        // update gui
         _currentScore += (int)receivedPoints;
-
 
         EventIntMessage message = new EventIntMessage();
         message.MessageInt = _currentScore;
@@ -41,8 +39,6 @@ public class ScoreManager : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     public void OnGameEnd()
 	{
-        Debug.Log(_currentScore);
-
         if (_currentScore > _bestScore)
 		{
             _bestScore = _currentScore;
