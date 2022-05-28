@@ -659,7 +659,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 140, y: -183}
-  m_SizeDelta: {x: 180, y: 41.899994}
+  m_SizeDelta: {x: 200, y: 41.899994}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &776726414
 MonoBehaviour:
@@ -801,7 +801,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Restart
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1257,17 +1257,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d351bdefab31fd42992d9d5025a6caa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObserverEvent: {fileID: 11400000, guid: d382f3f8d5b99724981b56b9eb71b960, type: 2}
+  ObserverEvent: {fileID: 11400000, guid: e46355326af8d1948b65ae2c554c5e1e, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
+      - m_Target: {fileID: 968885218}
+        m_TargetAssemblyTypeName: PointCounter, Assembly-CSharp
+        m_MethodName: OnGameReset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1422,7 +1422,6 @@ GameObject:
   - component: {fileID: 1290485269}
   - component: {fileID: 1290485270}
   - component: {fileID: 1290485271}
-  - component: {fileID: 1290485272}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -1468,7 +1467,9 @@ MonoBehaviour:
   SpawnDifficultyModifier: 0.3
   ObstacleLimit: 2.6
   SpawnedObjectsHolder: {fileID: 1747016060}
+  EndGameScreenTransform: {fileID: 1795494874}
   ObstaclePrefab: {fileID: 9171132827639903448, guid: f060294a5b4bf5845aebacb0da3ca406, type: 3}
+  ResetLevelEvent: {fileID: 11400000, guid: e46355326af8d1948b65ae2c554c5e1e, type: 2}
 --- !u!114 &1290485271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1487,37 +1488,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1290485270}
         m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
-        m_MethodName: StopMovement
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  CreationBase: 1
-  ActivationBase: 0
---- !u!114 &1290485272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1290485268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d351bdefab31fd42992d9d5025a6caa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObserverEvent: {fileID: 11400000, guid: 4bfde949563364740b4661cccdd519aa, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1290485270}
-        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
-        m_MethodName: OnPointsZoneTriggered
+        m_MethodName: OnFishDeath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1769,7 +1740,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: -140, y: -183}
-  m_SizeDelta: {x: 180, y: 41.899994}
+  m_SizeDelta: {x: 200, y: 41.899994}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2036991260
 MonoBehaviour:
@@ -1814,7 +1785,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2036991261}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1290485270}
+        m_TargetAssemblyTypeName: LevelController, Assembly-CSharp
+        m_MethodName: ResetLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2036991261
 MonoBehaviour:
   m_ObjectHideFlags: 0

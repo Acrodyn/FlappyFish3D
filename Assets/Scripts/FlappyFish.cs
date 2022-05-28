@@ -80,6 +80,8 @@ public class FlappyFish : MonoBehaviour
     {
         _isDead = false;
         FishRigidBody.useGravity = true;
+        FishRigidBody.velocity = Vector3.zero;
+        transform.position = Vector3.zero;
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     private void Jump()

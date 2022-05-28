@@ -15,7 +15,9 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private float SpawnDifficultyModifier;
 	[SerializeField] private float ObstacleLimit;
 	[SerializeField] private Transform SpawnedObjectsHolder;
+	[SerializeField] private Transform EndGameScreenTransform;
  	[SerializeField] private GameObject ObstaclePrefab;
+	[SerializeField] private ObserverEvent ResetLevelEvent;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
 	public bool IsLevelMovementStopped => _isLevelMovementStopped;
@@ -48,15 +50,22 @@ public class LevelController : MonoBehaviour
 	{
 		_skyBoxMaterial.SetFloat("_Rotation", 0f);
 	}
-	// ------------------------------------------------------------------------------------------------------------------------------
-	public void StopMovement()
+	// ------------------------------------------------------------------------------------------------------------------------------ 
+	public void ResetLevel()
+	{
+		DestroyAllObjects();
+		_isLevelMovementStopped = false;
+		_spawnDelay = StartSpawnDelay;
+		Core.ActiveFlappyFish.ReviveFish();
+		EndGameScreenTransform.gameObject.SetActive(false);
+
+		ResetLevelEvent.Trigger();
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------ 
+	public void OnFishDeath()
 	{
 		_isLevelMovementStopped = true;
-	}
-	// ------------------------------------------------------------------------------------------------------------------------------
-	public void OnPointsZoneTriggered()
-	{
-
+		EndGameScreenTransform.gameObject.SetActive(true);
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
@@ -100,6 +109,16 @@ public class LevelController : MonoBehaviour
 		}
 
 		return Random.Range(obstacleDownLimit, obstacleUpLimit);
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	private void DestroyAllObjects()
+	{
+		foreach (Transform child in SpawnedObjectsHolder)
+		{
+			Destroy(child.gameObject);
+		}
+
+		_lastSpawnedObstacleTransform = null;
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 }
