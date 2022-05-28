@@ -5,6 +5,7 @@ public class EventListener : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	public ObserverEvent ObserverEvent;
 	public EventObject Response = new EventObject();
+	public ObserverEvent.ObserverPriority Priority = ObserverEvent.ObserverPriority.Low;
 	public bool CreationBase = true;
 	public bool ActivationBase = false;
 	// ------------------------------------------------------------------------------------------------------------------------------
@@ -12,7 +13,7 @@ public class EventListener : MonoBehaviour
 	{
 		if (CreationBase)
 		{ 
-			ObserverEvent.Register(this);
+			ObserverEvent.Register(this, Priority);
 		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
@@ -20,7 +21,7 @@ public class EventListener : MonoBehaviour
 	{
 		if (ActivationBase)
 		{
-			ObserverEvent.Register(this);
+			ObserverEvent.Register(this, Priority);
 		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------

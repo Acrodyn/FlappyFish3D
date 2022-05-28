@@ -169,6 +169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Priority: 1
   CreationBase: 1
   ActivationBase: 0
 --- !u!114 &5972750605293783021
@@ -199,5 +200,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  Priority: 3
   CreationBase: 1
   ActivationBase: 0
