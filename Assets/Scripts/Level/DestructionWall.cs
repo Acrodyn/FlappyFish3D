@@ -7,7 +7,7 @@ public class DestructionWall : MonoBehaviour
     {
         if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
 		{
-            GameObject gameObject = Utils.GetMovingObjectRoot(collider.transform).gameObject;
+            GameObject gameObject = Utils.GetComponentAtRoot<MovingObject>(collider.transform).gameObject;
             gameObject.SetActive(false);
         }
     }

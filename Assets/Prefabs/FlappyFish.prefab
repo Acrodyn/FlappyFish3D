@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 8995639637789869924}
   - component: {fileID: 8995639637789869925}
   - component: {fileID: 8995639637789869928}
+  - component: {fileID: 2532761650978201735}
   - component: {fileID: 8995639637789869929}
+  - component: {fileID: 3779985095618900211}
+  - component: {fileID: 961409259321523645}
   m_Layer: 0
   m_Name: FlappyFish
   m_TagString: Player
@@ -120,6 +123,21 @@ MonoBehaviour:
   DeathSound: {fileID: 8300000, guid: ec5abf95c318de541baacacbd7b269da, type: 3}
   FishDeathEvent: {fileID: 11400000, guid: 1557117df4bcce444950e143b4728844, type: 2}
   FishRigidBody: {fileID: 8995639637789869929}
+--- !u!114 &2532761650978201735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995639637789869922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84709311dbb6c004f92eded05d495691, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ActionDelay: 0
+  DetectionLength: 0
+  BottomOffset: 0
 --- !u!54 &8995639637789869929
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -136,3 +154,65 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 18
   m_CollisionDetection: 0
+--- !u!114 &3779985095618900211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995639637789869922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d351bdefab31fd42992d9d5025a6caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObserverEvent: {fileID: 11400000, guid: 44f412bb93133e4419cf90f8ebdc2912, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2532761650978201735}
+        m_TargetAssemblyTypeName: FishAIAgent, Assembly-CSharp
+        m_MethodName: ResetAgent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Priority: 1
+  CreationBase: 1
+  ActivationBase: 0
+--- !u!114 &961409259321523645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8995639637789869922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d351bdefab31fd42992d9d5025a6caa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObserverEvent: {fileID: 11400000, guid: 1557117df4bcce444950e143b4728844, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2532761650978201735}
+        m_TargetAssemblyTypeName: FishAIAgent, Assembly-CSharp
+        m_MethodName: ResetAgent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  Priority: 1
+  CreationBase: 1
+  ActivationBase: 0

@@ -63,6 +63,7 @@ public class LevelController : MonoBehaviour
 		_objectSpawner.DestroyAllObjects();
 		_isLevelMovementStopped = false;
 		_spawnDelay = StartSpawnDelay;
+		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		Core.ActiveFlappyFish.ReviveFish();
 		EndGameScreenTransform.gameObject.SetActive(false);
 

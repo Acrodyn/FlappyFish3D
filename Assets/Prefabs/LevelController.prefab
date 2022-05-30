@@ -1564,8 +1564,8 @@ MonoBehaviour:
   RegularSpawnDelay: 1.5
   PickupTrailIntervalMin: 0.1
   PickupTrailIntervalMax: 0.4
-  PickupSpawnDelayMin: 2
-  PickupSpawnDelayMax: 4
+  PickupSpawnDelayMin: 7
+  PickupSpawnDelayMax: 12
   SpawnDifficultyModifier: 0.3
   EndGameScreenTransform: {fileID: 8938337646533698076}
   ResetLevelEvent: {fileID: 11400000, guid: e46355326af8d1948b65ae2c554c5e1e, type: 2}
@@ -1583,7 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ObstacleLimit: 2.6
   PickupLimit: 2.3
-  ObstaclePoolSize: 7
+  ObstaclePoolSize: 8
   PerPickupPoolSize: 2
   SpawnedObjectsHolder: {fileID: 8938337646581655738}
   SpawnWallTransform: {fileID: 0}

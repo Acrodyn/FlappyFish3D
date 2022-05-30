@@ -45,7 +45,7 @@ public class FlappyFish : MonoBehaviour
 
         if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
 		{
-            MovingObject movingObject = Utils.GetMovingObjectRoot(collider.transform);
+            MovingObject movingObject = Utils.GetComponentAtRoot<MovingObject>(collider.transform);
             if (movingObject == null)
 			{
                 throw new System.Exception(string.Format("Object {0} is marked as movable but isn't part of a hiararchy that includes movable component", collider.gameObject.ToString()));
@@ -84,7 +84,7 @@ public class FlappyFish : MonoBehaviour
         transform.position = Vector3.zero;
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    private void Jump()
+    public void Jump()
 	{
         if (_isDead)
 		{
@@ -95,6 +95,11 @@ public class FlappyFish : MonoBehaviour
         FishRigidBody.AddForce(Vector2.up * DefaultJumpStrength);
         AudioSource.PlayClipAtPoint(JumpSound, transform.position);
     }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    public bool IsFalling()
+	{
+        return FishRigidBody.velocity.y <= 0f;
+	}
     // ------------------------------------------------------------------------------------------------------------------------------
     private void AssignInputActions()
 	{
@@ -115,7 +120,7 @@ public class FlappyFish : MonoBehaviour
             return;
 		}
 
-        if (FishRigidBody.velocity.y < 0)
+        if (FishRigidBody.velocity.y < 0f)
 		{
             FishRigidBody.AddForce(Vector2.down * GravityAcceleration);
         }

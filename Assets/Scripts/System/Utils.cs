@@ -14,20 +14,20 @@ public static class Utils
         return AreNearlyEqual(a, 0.0f, epsilon);
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    public static MovingObject GetMovingObjectRoot(Transform transform)
+    public static T GetComponentAtRoot<T>(Transform transform)
     {
         if (transform == null || transform.gameObject == null)
 		{
-            return null;
+            return default(T);
 		}
 
-        MovingObject movingObject = transform.gameObject.GetComponent<MovingObject>();
+        T movingObject = transform.gameObject.GetComponent<T>();
         if (movingObject != null)
         {
             return movingObject;
         }
 
-        return GetMovingObjectRoot(transform.parent);
+        return GetComponentAtRoot<T>(transform.parent);
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public static List<int> GetRandomOrderingList(int higherNumber)
