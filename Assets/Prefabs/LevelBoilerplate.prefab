@@ -220,6 +220,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3970746371717336832}
     m_Modifications:
+    - target: {fileID: 8146356272618221231, guid: 42d6925ef03f5a44ca183f047758b7b4, type: 3}
+      propertyPath: SpawnWallTransform
+      value: 
+      objectReference: {fileID: 7980017067342020972}
     - target: {fileID: 8938337646125141970, guid: 42d6925ef03f5a44ca183f047758b7b4, type: 3}
       propertyPath: m_Name
       value: LevelController
@@ -273,6 +277,11 @@ PrefabInstance:
 --- !u!4 &3970746372779342497 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8938337646125141971, guid: 42d6925ef03f5a44ca183f047758b7b4, type: 3}
+  m_PrefabInstance: {fileID: 5409305230697608562}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7980017067342020972 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2715390529429664798, guid: 42d6925ef03f5a44ca183f047758b7b4, type: 3}
   m_PrefabInstance: {fileID: 5409305230697608562}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5461743056061238917
