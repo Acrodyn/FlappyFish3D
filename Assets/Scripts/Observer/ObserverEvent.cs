@@ -13,6 +13,8 @@ public class ObserverEvent : ScriptableObject
 		High
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
+	// [Code - private]
+
 	private Dictionary<ObserverPriority, List<EventListener>> _listeners = new Dictionary<ObserverPriority, List<EventListener>>();
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void OnEnable()

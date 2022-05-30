@@ -8,8 +8,8 @@ public class DestructionWall : MonoBehaviour
         if (collider.gameObject.CompareTag(Consts.MOVABLE_TAG))
 		{
             GameObject gameObject = Utils.GetMovingObjectRoot(collider.transform).gameObject;
-            Destroy(gameObject);
-		}
+            gameObject.SetActive(false);
+        }
     }
     // ------------------------------------------------------------------------------------------------------------------------------
 }

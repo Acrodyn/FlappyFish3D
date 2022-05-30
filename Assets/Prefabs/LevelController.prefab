@@ -1469,6 +1469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8938337646125141971}
   - component: {fileID: 8938337646125141968}
+  - component: {fileID: 8146356272618221231}
   - component: {fileID: 8938337646125141969}
   m_Layer: 0
   m_Name: LevelController
@@ -1516,11 +1517,24 @@ MonoBehaviour:
   StartSpawnDelay: 4
   RegularSpawnDelay: 1.5
   SpawnDifficultyModifier: 0.3
-  ObstacleLimit: 2.6
-  SpawnedObjectsHolder: {fileID: 8938337646581655738}
   EndGameScreenTransform: {fileID: 8938337646533698076}
-  ObstaclePrefab: {fileID: 9171132827639903448, guid: f060294a5b4bf5845aebacb0da3ca406, type: 3}
   ResetLevelEvent: {fileID: 11400000, guid: e46355326af8d1948b65ae2c554c5e1e, type: 2}
+--- !u!114 &8146356272618221231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8938337646125141970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a292c80ea3a5ce940b23e121e6c3fbc9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObstacleLimit: 2.6
+  ObstaclePoolSize: 7
+  SpawnedObjectsHolder: {fileID: 8938337646581655738}
+  ObstaclePrefab: {fileID: 9171132827639903448, guid: f060294a5b4bf5845aebacb0da3ca406, type: 3}
 --- !u!114 &8938337646125141969
 MonoBehaviour:
   m_ObjectHideFlags: 0

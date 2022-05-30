@@ -13,10 +13,7 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private float StartSpawnDelay;
 	[SerializeField] private float RegularSpawnDelay;
 	[SerializeField] private float SpawnDifficultyModifier;
-	[SerializeField] private float ObstacleLimit;
-	[SerializeField] private Transform SpawnedObjectsHolder;
 	[SerializeField] private Transform EndGameScreenTransform;
- 	[SerializeField] private GameObject ObstaclePrefab;
 	[SerializeField] private ObserverEvent ResetLevelEvent;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
@@ -24,7 +21,7 @@ public class LevelController : MonoBehaviour
 	public float ObjectMovementSpeed => ObjectsSpeed;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
-	private Transform _lastSpawnedObstacleTransform;
+	private ObjectSpawner _objectSpawner;
 	private Material _skyBoxMaterial;
 	private float _currentSkyBoxRotation = 0f;
 	private float _spawnDelay;
@@ -35,6 +32,7 @@ public class LevelController : MonoBehaviour
 		Core.SetActiveLevelController(this);
 		_skyBoxMaterial = RenderSettings.skybox;
 		_spawnDelay = StartSpawnDelay;
+		_objectSpawner = GetComponent<ObjectSpawner>();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
@@ -53,7 +51,7 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------ 
 	public void ResetLevel()
 	{
-		DestroyAllObjects();
+		_objectSpawner.DestroyAllObjects();
 		_isLevelMovementStopped = false;
 		_spawnDelay = StartSpawnDelay;
 		Core.ActiveFlappyFish.ReviveFish();
@@ -84,41 +82,9 @@ public class LevelController : MonoBehaviour
 		_spawnDelay -= Time.deltaTime;
 		if (_spawnDelay <= 0f)
 		{
-			_lastSpawnedObstacleTransform = Instantiate(ObstaclePrefab, SpawnedObjectsHolder, false).transform;
-			_lastSpawnedObstacleTransform.position = new Vector3(_lastSpawnedObstacleTransform.position.x, GetObstacleSpawnPosition(), _lastSpawnedObstacleTransform.transform.position.z);
+			_objectSpawner.ActivateObstacleObject(Difficulty);
 			_spawnDelay = RegularSpawnDelay - Difficulty * SpawnDifficultyModifier;
 		}
-	}
-	// ------------------------------------------------------------------------------------------------------------------------------
-	private float GetObstacleSpawnPosition()
-	{
-		float obstacleDownLimit;
-		float obstacleUpLimit;
-
-		if (_lastSpawnedObstacleTransform != null)
-		{
-			float lastObstaclePosition = _lastSpawnedObstacleTransform.position.y;
-
-			obstacleDownLimit = Mathf.Clamp(lastObstaclePosition - ObstacleLimit * Difficulty, -ObstacleLimit, ObstacleLimit);
-			obstacleUpLimit = Mathf.Clamp(lastObstaclePosition + ObstacleLimit * Difficulty, -ObstacleLimit, ObstacleLimit);
-		}
-		else
-		{
-			obstacleDownLimit = -ObstacleLimit;
-			obstacleUpLimit = ObstacleLimit;
-		}
-
-		return Random.Range(obstacleDownLimit, obstacleUpLimit);
-	}
-	// ------------------------------------------------------------------------------------------------------------------------------
-	private void DestroyAllObjects()
-	{
-		foreach (Transform child in SpawnedObjectsHolder)
-		{
-			Destroy(child.gameObject);
-		}
-
-		_lastSpawnedObstacleTransform = null;
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 }
