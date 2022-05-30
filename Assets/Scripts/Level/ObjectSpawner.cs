@@ -40,7 +40,7 @@ public class ObjectSpawner : MonoBehaviour
 	{
 		foreach (Transform child in SpawnedObjectsHolder)
 		{
-			Destroy(child.gameObject);
+			child.gameObject.SetActive(false);
 		}
 
 		_lastSpawnedObstacleTransform = null;
