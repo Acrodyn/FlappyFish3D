@@ -23,6 +23,7 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private ObserverEvent ResetLevelEvent;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
+	public bool IsAutoRestartActivated => AutoRestartOnDeath;
 	public bool IsLevelMovementStopped => _isLevelMovementStopped;
 	public float ObjectMovementSpeed => ObjectsSpeed * _speedModifier;
 	public float ModifierValue => _modifierValue;
@@ -50,6 +51,11 @@ public class LevelController : MonoBehaviour
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		_objectSpawner = GetComponent<ObjectSpawner>();
 		ResetModifierData();
+
+		if (AutoRestartOnDeath)
+		{
+			StartRun();
+		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
@@ -77,13 +83,17 @@ public class LevelController : MonoBehaviour
 	public void ResetLevel()
 	{
 		_objectSpawner.DestroyAllObjects();
-		_hasGameStarted = false;
 		_isLevelMovementStopped = false;
 		_spawnDelay = StartSpawnDelay;
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		Core.ActiveFlappyFish.ReviveFish();
 		EndGameScreenTransform.gameObject.SetActive(false);
-		StartGameScreenTransform.gameObject.SetActive(true);
+
+		if (!AutoRestartOnDeath)
+		{
+			_hasGameStarted = false;
+			StartGameScreenTransform.gameObject.SetActive(true);
+		}
 
 		ResetLevelEvent.Trigger();
 	}
