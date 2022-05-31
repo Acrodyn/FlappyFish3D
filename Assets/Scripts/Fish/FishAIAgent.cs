@@ -67,7 +67,7 @@ public class FishAIAgent : MonoBehaviour
 	private void AvoidObstacle()
 	{
 		Collider goalColllider = _obstacleAhead.PointsZoneColider;
-		if (_flappyFish.transform.position.y <= goalColllider.bounds.center.y - BottomOffset)
+		if (_flappyFish.transform.position.y < goalColllider.bounds.center.y - BottomOffset)
 		{
 			_flappyFish.Jump();
 		}

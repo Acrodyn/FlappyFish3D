@@ -6,6 +6,7 @@ public class LevelController : MonoBehaviour
 {
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Editor]
+	[SerializeField] private bool AutoRestartOnDeath;
 	[Range(0f, 1f)]
 	[SerializeField] private float Difficulty;
 	[SerializeField] private float SkyBoxMovementSpeed;
@@ -74,6 +75,11 @@ public class LevelController : MonoBehaviour
 	{
 		_isLevelMovementStopped = true;
 		EndGameScreenTransform.gameObject.SetActive(true);
+
+		if (AutoRestartOnDeath)
+		{
+			ResetLevel();
+		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
