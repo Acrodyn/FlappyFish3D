@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelController : MonoBehaviour
@@ -56,6 +54,11 @@ public class LevelController : MonoBehaviour
 		if (AutoRestartOnDeath)
 		{
 			StartRun();
+		}
+
+		if (Core.TransitionManager.IsSceneLoadedFromMenu)
+		{
+			Difficulty = Core.TransitionManager.DifficultyScale;
 		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------

@@ -15,6 +15,7 @@ public class FlappyFish : MonoBehaviour
     [SerializeField] private AudioSource DeathSoundSource;
     [SerializeField] private ObserverEvent FishDeathEvent;
     [SerializeField] private Rigidbody FishRigidBody;
+    [SerializeField] private FishAIAgent FishAIAgent;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
     public bool IsDead => _isDead;
@@ -33,6 +34,11 @@ public class FlappyFish : MonoBehaviour
 		{
             FishRigidBody.isKinematic = true;
 		}
+
+        if (Core.TransitionManager.IsSceneLoadedFromMenu)
+        {
+            FishAIAgent.enabled = Core.TransitionManager.HasAIAssistant;
+        }
     }
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()

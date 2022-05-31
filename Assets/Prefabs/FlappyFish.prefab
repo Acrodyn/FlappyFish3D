@@ -413,6 +413,7 @@ MonoBehaviour:
   DeathSoundSource: {fileID: 3420021267352710175}
   FishDeathEvent: {fileID: 11400000, guid: 1557117df4bcce444950e143b4728844, type: 2}
   FishRigidBody: {fileID: 8995639637789869929}
+  FishAIAgent: {fileID: 2532761650978201735}
 --- !u!114 &2532761650978201735
 MonoBehaviour:
   m_ObjectHideFlags: 0

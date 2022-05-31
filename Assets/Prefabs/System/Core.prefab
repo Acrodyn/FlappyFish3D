@@ -93,7 +93,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InputManagerReference: {fileID: 5702723427646857636}
   ScoreManagerReference: {fileID: 3201674006182579632}
-  SceneManagerReference: {fileID: 146805008508078267}
+  TransitionManagerReference: {fileID: 9007483819238385738}
 --- !u!1 &2571782275862082967
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6246860285788706521}
-  - component: {fileID: 146805008508078267}
+  - component: {fileID: 9007483819238385738}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -126,7 +126,7 @@ Transform:
   m_Father: {fileID: 1389403158032961625}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &146805008508078267
+--- !u!114 &9007483819238385738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2571782275862082967}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0ebe8ac0877efe42b1659136db941e8, type: 3}
+  m_Script: {fileID: 11500000, guid: ae47d95a6c98ea7459add157ccd295ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3029552992413486897

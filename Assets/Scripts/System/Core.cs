@@ -6,12 +6,12 @@ public class Core : MonoBehaviour
     // [Editor] Editor values
     [SerializeField] private InputManager InputManagerReference;
     [SerializeField] private ScoreManager ScoreManagerReference;
-    [SerializeField] private SceneManager SceneManagerReference;
+    [SerializeField] private TransitionManager TransitionManagerReference;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
     public static InputManager InputManager => Instance.InputManagerReference;
     public static ScoreManager ScoreManager => Instance.ScoreManagerReference;
-    public static SceneManager SceneManager => Instance.SceneManagerReference;
+    public static TransitionManager TransitionManager => Instance.TransitionManagerReference;
     public static FlappyFish ActiveFlappyFish => Instance._flappyFishReference;
     public static LevelController ActiveLevelController => Instance._levelController;
     // ------------------------------------------------------------------------------------------------------------------------------
