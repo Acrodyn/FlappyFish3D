@@ -14,4 +14,9 @@ public class EndGameScreen : MonoBehaviour
         BestScore.text = Core.ScoreManager.BestScore.ToString();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
+    public void ReturnToMenu()
+	{
+        Core.SceneManager.LoadMenu();
+	}
+    // ------------------------------------------------------------------------------------------------------------------------------
 }
