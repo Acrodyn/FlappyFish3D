@@ -60,29 +60,28 @@ public class Core : MonoBehaviour
         Instance._levelController = levelController;
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    private void InitGameSystems()
-	{
-        InitGameSettings();
-    }
-    // ------------------------------------------------------------------------------------------------------------------------------
-    public void ShowCursor(bool value)
+    public static void ShowCursor(bool value)
     {
         Cursor.lockState = value ? CursorLockMode.None : CursorLockMode.Locked;
         Cursor.visible = value;
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    public void ToggleCursor()
+    public static void ToggleCursor()
     {
         bool isCurrentlyVisible = Cursor.visible;
         Cursor.lockState = isCurrentlyVisible ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !isCurrentlyVisible;
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    // Should be a separate class?
     public void InitGameSettings()
-	{
+    {
         ShowCursor(true); // ? (GameSettings.ShowCursor);
         //Application.targetFrameRate = 144;
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    private void InitGameSystems()
+	{
+        InitGameSettings();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
 }

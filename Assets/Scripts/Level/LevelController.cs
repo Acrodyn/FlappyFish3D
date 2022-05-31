@@ -51,6 +51,7 @@ public class LevelController : MonoBehaviour
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		_objectSpawner = GetComponent<ObjectSpawner>();
 		ResetModifierData();
+		Core.ShowCursor(false);
 
 		if (AutoRestartOnDeath)
 		{
@@ -87,6 +88,7 @@ public class LevelController : MonoBehaviour
 		_spawnDelay = StartSpawnDelay;
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		Core.ActiveFlappyFish.ReviveFish();
+		Core.ShowCursor(false);
 		EndGameScreenTransform.gameObject.SetActive(false);
 
 		if (!AutoRestartOnDeath)
@@ -102,6 +104,7 @@ public class LevelController : MonoBehaviour
 	{
 		_isLevelMovementStopped = true;
 		EndGameScreenTransform.gameObject.SetActive(true);
+		Core.ShowCursor(true);
 		ResetModifierData();
 
 		if (AutoRestartOnDeath)
