@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Biom1.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Biom2.unity
+    guid: 4ad83f14059bc6a4687e395ed4207583
+  - enabled: 1
+    path: Assets/Scenes/Biom3.unity
+    guid: 2820e93347951f947b29ef7b22341cb2
   m_configObjects: {}
