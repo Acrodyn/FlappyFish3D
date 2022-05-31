@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f1871107962116499ebc44281f16d81, type: 3}
   m_Name: Modifier2
   m_EditorClassIdentifier: 
-  Duration: 7
+  Duration: 4
   PointScale: 1.5

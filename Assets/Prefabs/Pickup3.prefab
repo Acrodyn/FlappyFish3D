@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3071772480996898785}
   - component: {fileID: 3071772480996898814}
   - component: {fileID: 2699641629057420498}
+  - component: {fileID: 869306938086684335}
   m_Layer: 0
   m_Name: Pickup3
   m_TagString: Movable
@@ -95,7 +96,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3071772480996898811}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -141,3 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StopOnLevelEnd: 1
+--- !u!114 &869306938086684335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3071772480996898811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9237df59e72b5544d9dff4608dba9e12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModifierData: {fileID: 11400000, guid: 9e02471aff94d2e438432e7416f28425, type: 2}

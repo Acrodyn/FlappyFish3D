@@ -23,7 +23,8 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
 	public bool IsLevelMovementStopped => _isLevelMovementStopped;
-	public float ObjectMovementSpeed => ObjectsSpeed;
+	public float ObjectMovementSpeed => ObjectsSpeed * _speedModifier;
+	public float ModifierValue => _modifierValue;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
 	private ObjectSpawner _objectSpawner;
@@ -32,8 +33,12 @@ public class LevelController : MonoBehaviour
 	private float _spawnDelay;
 	private float _pickupSpawnDelayGeneral;
 	private float _pickupSpawnDelay;
+	private float _speedModifier = 1f;
 	private bool _isLevelMovementStopped = false;
 	private bool _isPickupReady = false;
+	private bool _isModifierActive;
+	private float _modifierDuration;
+	private float _modifierValue;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Start()
 	{
@@ -42,6 +47,7 @@ public class LevelController : MonoBehaviour
 		_spawnDelay = StartSpawnDelay;
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		_objectSpawner = GetComponent<ObjectSpawner>();
+		ResetModifierData();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
@@ -52,6 +58,8 @@ public class LevelController : MonoBehaviour
 			ObstacleSpawnCheck();
 			PickupSpawnCheck();
 		}
+
+		CheckModifier();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void OnDestroy()
@@ -75,6 +83,7 @@ public class LevelController : MonoBehaviour
 	{
 		_isLevelMovementStopped = true;
 		EndGameScreenTransform.gameObject.SetActive(true);
+		ResetModifierData();
 
 		if (AutoRestartOnDeath)
 		{
@@ -82,9 +91,34 @@ public class LevelController : MonoBehaviour
 		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
+	public void SetSpeedModifier(float modifier)
+	{
+		_speedModifier = modifier;
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	public void ResetSpeedModifier()
+	{
+		_speedModifier = 1f;
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	public void ApplyModifierData(ModifierData data)
+	{
+		_isModifierActive = true;
+		_modifierDuration = data.ModifierDuration;
+		_modifierValue = data.ModifierPointScale;
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	public void ResetModifierData()
+	{
+		_isModifierActive = false;
+		_modifierDuration = 0f;
+		_modifierValue = 1f;
+		ResetSpeedModifier();
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()
 	{
-		_currentSkyBoxRotation = Mathf.MoveTowards(_currentSkyBoxRotation, Consts.FULL_REVOLUTION, Time.deltaTime * SkyBoxMovementSpeed);
+		_currentSkyBoxRotation = Mathf.MoveTowards(_currentSkyBoxRotation, Consts.FULL_REVOLUTION, Time.deltaTime * SkyBoxMovementSpeed * _speedModifier);
 		if (Utils.AreNearlyEqual(_currentSkyBoxRotation, Consts.FULL_REVOLUTION))
 		{
 			_currentSkyBoxRotation = 0f;
@@ -95,7 +129,7 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private void ObstacleSpawnCheck()
 	{
-		_spawnDelay -= Time.deltaTime;
+		_spawnDelay -= (Time.deltaTime * _speedModifier);
 		if (_spawnDelay <= 0f)
 		{
 			_objectSpawner.ActivateObstacleObject(Difficulty);
@@ -117,7 +151,7 @@ public class LevelController : MonoBehaviour
 	{
 		if (_isPickupReady)
 		{
-			_pickupSpawnDelay -= Time.deltaTime;
+			_pickupSpawnDelay -= (Time.deltaTime * _speedModifier);
 			if (_pickupSpawnDelay <= 0f)
 			{
 				_objectSpawner.ActivatePickupObject();
@@ -128,12 +162,26 @@ public class LevelController : MonoBehaviour
 			return;
 		}
 
-		_pickupSpawnDelayGeneral -= Time.deltaTime;
+		_pickupSpawnDelayGeneral -= (Time.deltaTime * _speedModifier);
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private float GetPickupSpawnDelay()
 	{
 		return Random.Range(PickupSpawnDelayMin, PickupSpawnDelayMax);
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	private void CheckModifier()
+	{
+		if (!_isModifierActive)
+		{
+			return;
+		}
+
+		_modifierDuration -= Time.deltaTime;
+		if (_modifierDuration <= 0f)
+		{
+			ResetModifierData();
+		}
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 }

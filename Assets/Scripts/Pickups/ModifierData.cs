@@ -10,6 +10,6 @@ public class ModifierData : ScriptableObject
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
     public float ModifierDuration => Duration;
-    public float ModifierdPointScale => PointScale;
+    public float ModifierPointScale => PointScale;
     // ------------------------------------------------------------------------------------------------------------------------------
 }

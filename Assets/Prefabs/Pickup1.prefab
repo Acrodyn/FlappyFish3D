@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 8064355502819470846}
   - component: {fileID: 8064355502819470845}
   - component: {fileID: 8064355502819470844}
-  - component: {fileID: 8064355502819470843}
-  - component: {fileID: 8064355502819470816}
   - component: {fileID: 8064355502819470847}
   - component: {fileID: 6167714371948760611}
+  - component: {fileID: -2686911679906175150}
+  - component: {fileID: 8064355502819470843}
+  - component: {fileID: 8064355502819470816}
   m_Layer: 0
   m_Name: Pickup1
   m_TagString: Movable
@@ -87,35 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8064355502819470843
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8064355502819470842}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &8064355502819470816
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8064355502819470842}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &8064355502819470847
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,3 +113,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StopOnLevelEnd: 1
+--- !u!114 &-2686911679906175150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8064355502819470842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c20cb627af4133644b9aa4c24d370c52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ModifierData: {fileID: 11400000, guid: ea941ca7a255ffb408d42053da4d3ca8, type: 2}
+  SpeedModifier: 0.6
+--- !u!65 &8064355502819470843
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8064355502819470842}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8064355502819470816
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8064355502819470842}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -17,24 +17,10 @@ public class ScoreManager : MonoBehaviour
     private int _currentScore;
     private int _bestScore;
     private int _lastScore;
-    private float _modifierDuration;
-    private float _modifierValue;
-    private bool _isModifierActive;
-    // ------------------------------------------------------------------------------------------------------------------------------
-    void Update()
-    {
-        CheckModifier();
-	}
     // ------------------------------------------------------------------------------------------------------------------------------
     public void UpdateScore()
 	{
-        float receivedPoints = DefaultPointsPerSuccess;
-
-        if (_isModifierActive)
-		{
-            receivedPoints *= _modifierValue; 
-		}
-
+        float receivedPoints = DefaultPointsPerSuccess * Core.ActiveLevelController.ModifierValue;
         _currentScore += (int)receivedPoints;
 
         EventIntMessage message = new EventIntMessage();
@@ -51,35 +37,6 @@ public class ScoreManager : MonoBehaviour
 
         _lastScore = _currentScore;
         _currentScore = 0;
-        ResetModifierData();
-    }
-    // ------------------------------------------------------------------------------------------------------------------------------
-    public void ApplyModifierData(ModifierData data)
-	{
-        _isModifierActive = true;
-        _modifierDuration = data.ModifierDuration;
-        _modifierValue = data.ModifierdPointScale;
-    }
-    // ------------------------------------------------------------------------------------------------------------------------------
-    public void ResetModifierData()
-	{
-        _isModifierActive = false;
-        _modifierDuration = 0f;
-        _modifierValue = 1f;
-    }
-    // ------------------------------------------------------------------------------------------------------------------------------
-    private void CheckModifier()
-	{
-        if (!_isModifierActive)
-        {
-            return;
-        }
-
-        _modifierDuration -= Time.deltaTime;
-        if (_modifierDuration <= 0f)
-		{
-            ResetModifierData();
-		}
     }
     // ------------------------------------------------------------------------------------------------------------------------------
 }

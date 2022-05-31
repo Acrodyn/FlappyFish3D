@@ -245,10 +245,6 @@ PrefabInstance:
       value: -22.34
       objectReference: {fileID: 0}
     - target: {fileID: 3970746372779342498, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
-      propertyPath: AutoRestartOnDeath
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3970746372779342498, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
       propertyPath: _obstaclePool.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -258,23 +254,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3970746372853795309, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
       propertyPath: IsFishImmortal
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7559906680422870530, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
-      propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7559906680422870530, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
-      propertyPath: ActionDelay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7559906680422870530, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
-      propertyPath: BottomOffset
-      value: 0.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 7559906680422870530, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
-      propertyPath: DetectionLength
-      value: 6
+    - target: {fileID: 4187254382251449309, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
+      propertyPath: PickupPrefabs.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7980017067342020972, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
       propertyPath: m_LocalPosition.x
