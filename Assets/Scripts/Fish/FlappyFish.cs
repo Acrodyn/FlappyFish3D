@@ -28,6 +28,7 @@ public class FlappyFish : MonoBehaviour
         _jumpStrength = DefaultJumpStrength;
         AssignInputActions();
         Core.SetActiveFish(this);
+        FishRigidBody.isKinematic = true;
     }
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
@@ -80,6 +81,7 @@ public class FlappyFish : MonoBehaviour
     {
         _isDead = false;
         FishRigidBody.useGravity = true;
+        FishRigidBody.isKinematic = true;
         FishRigidBody.velocity = Vector3.zero;
         transform.position = Vector3.zero;
     }
@@ -90,6 +92,12 @@ public class FlappyFish : MonoBehaviour
 		{
             return;
 		}
+
+        if (FishRigidBody.isKinematic)
+		{
+            FishRigidBody.isKinematic = false;
+            Core.ActiveLevelController.StartRun();
+        }
 
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector2.up * DefaultJumpStrength);

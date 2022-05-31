@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private float PickupSpawnDelayMin;
 	[SerializeField] private float PickupSpawnDelayMax;
 	[SerializeField] private float SpawnDifficultyModifier;
+	[SerializeField] private Transform StartGameScreenTransform;
 	[SerializeField] private Transform EndGameScreenTransform;
 	[SerializeField] private ObserverEvent ResetLevelEvent;
 	// ------------------------------------------------------------------------------------------------------------------------------
@@ -34,6 +35,7 @@ public class LevelController : MonoBehaviour
 	private float _pickupSpawnDelayGeneral;
 	private float _pickupSpawnDelay;
 	private float _speedModifier = 1f;
+	private bool _hasGameStarted = false;
 	private bool _isLevelMovementStopped = false;
 	private bool _isPickupReady = false;
 	private bool _isModifierActive;
@@ -52,6 +54,11 @@ public class LevelController : MonoBehaviour
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Update()
 	{
+		if (!_hasGameStarted)
+		{
+			return;
+		}
+
 		if (!_isLevelMovementStopped)
 		{
 			RotateSkyBox();
@@ -70,11 +77,13 @@ public class LevelController : MonoBehaviour
 	public void ResetLevel()
 	{
 		_objectSpawner.DestroyAllObjects();
+		_hasGameStarted = false;
 		_isLevelMovementStopped = false;
 		_spawnDelay = StartSpawnDelay;
 		_pickupSpawnDelayGeneral = StartSpawnDelay + GetPickupSpawnDelay();
 		Core.ActiveFlappyFish.ReviveFish();
 		EndGameScreenTransform.gameObject.SetActive(false);
+		StartGameScreenTransform.gameObject.SetActive(true);
 
 		ResetLevelEvent.Trigger();
 	}
@@ -114,6 +123,12 @@ public class LevelController : MonoBehaviour
 		_modifierDuration = 0f;
 		_modifierValue = 1f;
 		ResetSpeedModifier();
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	public void StartRun()
+	{
+		_hasGameStarted = true;
+		StartGameScreenTransform.gameObject.SetActive(false);
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 	private void RotateSkyBox()

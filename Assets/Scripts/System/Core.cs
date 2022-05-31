@@ -6,12 +6,12 @@ public class Core : MonoBehaviour
     // [Editor] Editor values
     [SerializeField] private InputManager InputManagerReference;
     [SerializeField] private ScoreManager ScoreManagerReference;
-    //[SerializeField] private HUDManager HUDManager;
-    [SerializeField] private SceneHandler SceneHandler;
+    [SerializeField] private SceneManager SceneManagerReference;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
     public static InputManager InputManager => Instance.InputManagerReference;
     public static ScoreManager ScoreManager => Instance.ScoreManagerReference;
+    public static SceneManager SceneManager => Instance.SceneManagerReference;
     public static FlappyFish ActiveFlappyFish => Instance._flappyFishReference;
     public static LevelController ActiveLevelController => Instance._levelController;
     // ------------------------------------------------------------------------------------------------------------------------------
@@ -45,21 +45,9 @@ public class Core : MonoBehaviour
 
     }
     // ------------------------------------------------------------------------------------------------------------------------------
-    // delete!
-    public static bool Exists()
-	{
-        return _instance != null;
-	}
-    // ------------------------------------------------------------------------------------------------------------------------------
-    public static Camera GetMainCamera()
-	{
-        return Instance._mainCamera;
-	}
-    // ------------------------------------------------------------------------------------------------------------------------------
     public static void SetActiveFish(FlappyFish flappyFish)
 	{
         Instance._flappyFishReference = flappyFish;
-        //Instance.InputManager.RegisterPlayer(player);
 	}
     // ------------------------------------------------------------------------------------------------------------------------------
     public static void SetActiveLevelController(LevelController levelController)
