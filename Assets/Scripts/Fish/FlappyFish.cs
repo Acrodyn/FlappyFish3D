@@ -11,8 +11,8 @@ public class FlappyFish : MonoBehaviour
     [SerializeField] private float GravityAcceleration;
     [SerializeField] private float DeathForce;
     [SerializeField] private float DeathSideForce;
-    [SerializeField] private AudioClip JumpSound;
-    [SerializeField] private AudioClip DeathSound;
+    [SerializeField] private AudioSource JumpSoundSource;
+    [SerializeField] private AudioSource DeathSoundSource;
     [SerializeField] private ObserverEvent FishDeathEvent;
     [SerializeField] private Rigidbody FishRigidBody;
     // ------------------------------------------------------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ public class FlappyFish : MonoBehaviour
         FishRigidBody.AddForce(Vector3.up * DeathForce);
         FishRigidBody.AddForce(Vector3.back * DeathSideForce, ForceMode.Impulse);
         FishDeathEvent.Trigger();
-        AudioSource.PlayClipAtPoint(DeathSound, transform.position);
+        DeathSoundSource.Play();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public void ReviveFish()
@@ -93,7 +93,7 @@ public class FlappyFish : MonoBehaviour
 
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector2.up * DefaultJumpStrength);
-        AudioSource.PlayClipAtPoint(JumpSound, transform.position);
+        JumpSoundSource.Play();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public bool IsFalling()

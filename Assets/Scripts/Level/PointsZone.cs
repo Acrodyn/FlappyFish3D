@@ -7,7 +7,7 @@ public class PointsZone : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Editor]
     [SerializeField] private ObserverEvent PointsZoneTriggered;
-    [SerializeField] private AudioClip PointSound;
+    [SerializeField] private AudioSource PointSoundSource;
     // ------------------------------------------------------------------------------------------------------------------------------
     void OnTriggerExit(Collider collider)
     {
@@ -16,7 +16,7 @@ public class PointsZone : MonoBehaviour
             if (!Core.ActiveFlappyFish.IsDead)
 			{
                 PointsZoneTriggered.Trigger();
-                AudioSource.PlayClipAtPoint(PointSound, transform.position);
+                PointSoundSource.Play();
 			}
         }
     }
