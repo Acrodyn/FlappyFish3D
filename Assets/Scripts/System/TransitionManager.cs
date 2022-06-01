@@ -3,6 +3,13 @@ using UnityEngine;
 public class TransitionManager : MonoBehaviour
 {
 	// ------------------------------------------------------------------------------------------------------------------------------
+	public enum Bioms
+	{
+		Biom1,
+		Biom2,
+		Biom3
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
 	public bool HasAIAssistant => _hasAIAssistant;
 	public float DifficultyScale => _difficultyScale;

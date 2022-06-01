@@ -7,11 +7,13 @@ public class Core : MonoBehaviour
     [SerializeField] private InputManager InputManagerReference;
     [SerializeField] private ScoreManager ScoreManagerReference;
     [SerializeField] private TransitionManager TransitionManagerReference;
+    [SerializeField] private SerializationManager SerializationManagerReference;
     // ------------------------------------------------------------------------------------------------------------------------------
     // [Properties]
     public static InputManager InputManager => Instance.InputManagerReference;
     public static ScoreManager ScoreManager => Instance.ScoreManagerReference;
     public static TransitionManager TransitionManager => Instance.TransitionManagerReference;
+    public static SerializationManager SerializationManager => Instance.SerializationManagerReference;
     public static FlappyFish ActiveFlappyFish => Instance._flappyFishReference;
     public static LevelController ActiveLevelController => Instance._levelController;
     // ------------------------------------------------------------------------------------------------------------------------------

@@ -17,6 +17,17 @@ public class ScoreManager : MonoBehaviour
     private int _currentScore;
     private int _bestScore;
     private int _lastScore;
+    private Dictionary<TransitionManager.Bioms, int> _biomScores;
+	// ------------------------------------------------------------------------------------------------------------------------------
+	void Start()
+	{
+        _biomScores = Core.SerializationManager.LoadBiomData().GetDictionary();
+    }
+    // ------------------------------------------------------------------------------------------------------------------------------
+    public void UpdateBestScore()
+	{
+        _bestScore = _biomScores[Core.ActiveLevelController.ActiveBiom];
+    }
     // ------------------------------------------------------------------------------------------------------------------------------
     public void UpdateScore()
 	{
@@ -33,6 +44,8 @@ public class ScoreManager : MonoBehaviour
         if (_currentScore > _bestScore)
  		{
             _bestScore = _currentScore;
+            _biomScores[Core.ActiveLevelController.ActiveBiom] = _bestScore;
+            Core.SerializationManager.SaveBiomData(_biomScores);
 		}
 
         _lastScore = _currentScore;

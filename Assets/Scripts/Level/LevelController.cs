@@ -4,6 +4,7 @@ public class LevelController : MonoBehaviour
 {
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Editor]
+	[SerializeField] private TransitionManager.Bioms Biom;
 	[SerializeField] private bool AutoRestartOnDeath;
 	[Range(0f, 1f)]
 	[SerializeField] private float Difficulty;
@@ -21,10 +22,11 @@ public class LevelController : MonoBehaviour
 	[SerializeField] private ObserverEvent ResetLevelEvent;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Properties]
-	public bool IsAutoRestartActivated => AutoRestartOnDeath;
-	public bool IsLevelMovementStopped => _isLevelMovementStopped;
+	public TransitionManager.Bioms ActiveBiom => Biom;
 	public float ObjectMovementSpeed => ObjectsSpeed * _speedModifier;
 	public float ModifierValue => _modifierValue;
+	public bool IsAutoRestartActivated => AutoRestartOnDeath;
+	public bool IsLevelMovementStopped => _isLevelMovementStopped;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	// [Code - private]
 	private ObjectSpawner _objectSpawner;
@@ -34,12 +36,12 @@ public class LevelController : MonoBehaviour
 	private float _pickupSpawnDelayGeneral;
 	private float _pickupSpawnDelay;
 	private float _speedModifier = 1f;
+	private float _modifierDuration;
+	private float _modifierValue;
 	private bool _hasGameStarted = false;
 	private bool _isLevelMovementStopped = false;
 	private bool _isPickupReady = false;
 	private bool _isModifierActive;
-	private float _modifierDuration;
-	private float _modifierValue;
 	// ------------------------------------------------------------------------------------------------------------------------------
 	void Start()
 	{
@@ -50,6 +52,7 @@ public class LevelController : MonoBehaviour
 		_objectSpawner = GetComponent<ObjectSpawner>();
 		ResetModifierData();
 		Core.ShowCursor(false);
+		Core.ScoreManager.UpdateBestScore();
 
 		if (AutoRestartOnDeath)
 		{
@@ -213,6 +216,11 @@ public class LevelController : MonoBehaviour
 		{
 			ResetModifierData();
 		}
+	}
+	// ------------------------------------------------------------------------------------------------------------------------------
+	private void LoadData()
+	{
+		BiomData biomData = Core.SerializationManager.LoadBiomData();
 	}
 	// ------------------------------------------------------------------------------------------------------------------------------
 }

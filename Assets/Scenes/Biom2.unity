@@ -244,6 +244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelBoilerplate
       objectReference: {fileID: 0}
+    - target: {fileID: 3970746372779342498, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
+      propertyPath: Biom
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3970746373359327085, guid: 681043aa6aa5b7e46ad8fa35e25e528a, type: 3}
       propertyPath: m_IsActive
       value: 0
