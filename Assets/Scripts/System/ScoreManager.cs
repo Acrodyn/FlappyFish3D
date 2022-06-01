@@ -31,7 +31,7 @@ public class ScoreManager : MonoBehaviour
     // ------------------------------------------------------------------------------------------------------------------------------
     public void UpdateBestScore()
 	{
-        _bestScore = _biomScores[Core.ActiveLevelController.ActiveBiom];
+        _bestScore = _biomScores == null ? 0 : _biomScores[Core.ActiveLevelController.ActiveBiom];
     }
     // ------------------------------------------------------------------------------------------------------------------------------
     public void UpdateScore()
