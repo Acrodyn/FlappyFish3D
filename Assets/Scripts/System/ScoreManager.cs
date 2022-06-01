@@ -24,6 +24,11 @@ public class ScoreManager : MonoBehaviour
         _biomScores = Core.SerializationManager.LoadBiomData().GetDictionary();
     }
     // ------------------------------------------------------------------------------------------------------------------------------
+    public int GetBestScore(TransitionManager.Bioms biom)
+	{
+        return _biomScores[biom];
+	}
+    // ------------------------------------------------------------------------------------------------------------------------------
     public void UpdateBestScore()
 	{
         _bestScore = _biomScores[Core.ActiveLevelController.ActiveBiom];
