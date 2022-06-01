@@ -11,6 +11,7 @@ public class FlappyFish : MonoBehaviour
     [SerializeField] private float GravityAcceleration;
     [SerializeField] private float DeathForce;
     [SerializeField] private float DeathSideForce;
+    [SerializeField] private float DeathTorqueForce;
     [SerializeField] private AudioSource JumpSoundSource;
     [SerializeField] private AudioSource DeathSoundSource;
     [SerializeField] private ObserverEvent FishDeathEvent;
@@ -83,6 +84,7 @@ public class FlappyFish : MonoBehaviour
         FishRigidBody.velocity = Vector3.zero;
         FishRigidBody.AddForce(Vector3.up * DeathForce);
         FishRigidBody.AddForce(Vector3.back * DeathSideForce, ForceMode.Impulse);
+        FishRigidBody.AddTorque(Vector3.right * DeathTorqueForce, ForceMode.Impulse);
         FishDeathEvent.Trigger();
         DeathSoundSource.Play();
     }
@@ -93,6 +95,7 @@ public class FlappyFish : MonoBehaviour
         FishRigidBody.useGravity = true;
         FishRigidBody.velocity = Vector3.zero;
         transform.position = Vector3.zero;
+        transform.rotation = Quaternion.identity;
 
         if (!Core.ActiveLevelController.IsAutoRestartActivated)
         {
